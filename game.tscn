@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmnq78pd7r5ok"]
+
+[ext_resource type="PackedScene" uid="uid://e15jr8biehm" path="res://Escenas/Suelo.tscn" id="1_80nbo"]
+[ext_resource type="PackedScene" uid="uid://cddrrlbjb5esc" path="res://Escenas/Personaje.tscn" id="2_e2o6t"]
+[ext_resource type="Script" uid="uid://duym6hsiey6ql" path="res://marker.gd" id="3_fc0e3"]
+[ext_resource type="Texture2D" uid="uid://byip4jqd2kjb7" path="res://icon.svg" id="3_feb5d"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Suelo" parent="." instance=ExtResource("1_80nbo")]
+position = Vector2(550, 287)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(551, 205)
+scale = Vector2(0.265625, 0.265625)
+texture = ExtResource("3_feb5d")
+script = ExtResource("3_fc0e3")
+
+[node name="Amogus" parent="." instance=ExtResource("2_e2o6t")]
+position = Vector2(779, 296)
+scale = Vector2(0.08, 0.07882353)
+
+[node name="Amogus2" parent="." instance=ExtResource("2_e2o6t")]
+position = Vector2(323, 295)
+scale = Vector2(-0.08, 0.08)

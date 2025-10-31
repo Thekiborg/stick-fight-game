@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://e15jr8biehm"]
+
+[ext_resource type="Texture2D" uid="uid://cjh3ny1ks0ys7" path="res://Assets/suelo.png" id="1_d1amd"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_pertk"]
+vertices = PackedVector2Array(300, -93.171875, 300, 165.00781, -301.22656, 165.97656, -307.7422, -103.8125)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-311, -104, -311, 176, 310, 175, 310, -103)])
+
+[node name="Suelo" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_d1amd")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_pertk")

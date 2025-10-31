@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cddrrlbjb5esc"]
+
+[ext_resource type="Script" uid="uid://dk6ii30ftp7or" path="res://Escenas/personaje.gd" id="1_0gco6"]
+[ext_resource type="Texture2D" uid="uid://baorpbf3yyjbh" path="res://Assets/personaje.png" id="1_qg4o5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0gco6"]
+size = Vector2(18.901382, 20.336514)
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["CharactersThatFight"]]
+script = ExtResource("1_0gco6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.9999938, -3.2230248)
+scale = Vector2(18.093914, 19.155396)
+shape = SubResource("RectangleShape2D_0gco6")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qg4o5")

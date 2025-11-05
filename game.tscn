@@ -1,10 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmnq78pd7r5ok"]
+[gd_scene load_steps=9 format=3 uid="uid://bmnq78pd7r5ok"]
 
 [ext_resource type="PackedScene" uid="uid://e15jr8biehm" path="res://Escenas/Suelo.tscn" id="1_80nbo"]
 [ext_resource type="PackedScene" uid="uid://cddrrlbjb5esc" path="res://Escenas/Personaje.tscn" id="2_e2o6t"]
-[ext_resource type="Script" uid="uid://duym6hsiey6ql" path="res://marker.gd" id="3_fc0e3"]
+[ext_resource type="Script" uid="uid://duym6hsiey6ql" path="res://Scripts/marker.gd" id="3_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://byip4jqd2kjb7" path="res://icon.svg" id="3_feb5d"]
-[ext_resource type="PackedScene" uid="uid://c4jfrahlfkatg" path="res://Escenas/PersonajeStronger.tscn" id="5_7jktm"]
+[ext_resource type="Script" uid="uid://yntme8urs7mx" path="res://Resources/Behaviors/Wander.gd" id="5_7jktm"]
+[ext_resource type="Script" uid="uid://bka3fcsiavoyu" path="res://Resources/Behaviors/Behavior.gd" id="5_ryrav"]
+
+[sub_resource type="Resource" id="Resource_ryrav"]
+script = ExtResource("5_7jktm")
+wander_radius = 40.0
+metadata/_custom_type_script = "uid://yntme8urs7mx"
+
+[sub_resource type="Resource" id="Resource_eow3j"]
+script = ExtResource("5_7jktm")
+wander_radius = 50.0
+metadata/_custom_type_script = "uid://yntme8urs7mx"
 
 [node name="Game" type="Node2D"]
 
@@ -20,11 +31,15 @@ script = ExtResource("3_fc0e3")
 [node name="Amogus" parent="." instance=ExtResource("2_e2o6t")]
 position = Vector2(666, 298)
 scale = Vector2(0.08, 0.07882353)
+behavior = SubResource("Resource_ryrav")
+
+[node name="Amogus2" parent="." instance=ExtResource("2_e2o6t")]
+position = Vector2(380, 297)
+rotation = 3.1415927
+scale = Vector2(0.24000244, -0.07882353)
+healthPoints = 20
+behavior = SubResource("Resource_eow3j")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(549, 288)
 zoom = Vector2(1.8, 1.8)
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("5_7jktm")]
-position = Vector2(378, 294)
-scale = Vector2(-0.18608531, 0.13251314)

@@ -1,6 +1,5 @@
 class_name Attack extends Behavior
 
-@export var extra_room: float = 0.0
 var frame:int = Engine.get_physics_frames()
 
 func do(character: Character) -> void:
@@ -21,7 +20,7 @@ func can_run(character: Character) -> bool:
 		return false
 	
 	if hitbox.overlaps_body(target):
-		print(character.name)
+		character.set_wanted_pos(character.position)
 		return true
 	
 	return false;

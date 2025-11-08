@@ -20,12 +20,12 @@ script = ExtResource("3_fc0e3")
 [node name="Amogus" parent="." instance=ExtResource("2_e2o6t")]
 position = Vector2(735, 369)
 scale = Vector2(0.2, 0.2)
-behavior = ExtResource("5_ryrav")
+logic_behavior = ExtResource("5_ryrav")
 
 [node name="Amogus2" parent="." instance=ExtResource("2_e2o6t")]
 position = Vector2(382.00003, 360)
 scale = Vector2(0.2, 0.2)
-behavior = ExtResource("5_ryrav")
+logic_behavior = ExtResource("5_ryrav")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(549, 288)

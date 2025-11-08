@@ -3,10 +3,11 @@ extends CharacterBody2D
 class_name Character
 
 var target: Node2D
+var cur_behavior: Behavior;
 
 @export var healthPoints: int = 10;
 @export var movement_speed: float = 60.0
-@export var behavior: Behavior;
+@export var logic_behavior: Behavior;
 
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
@@ -26,18 +27,22 @@ func _ready() -> void:
 	evaluate_behavior.call_deferred()
 	
 func find_target() -> Node2D:
-	if target:
+	if !is_instance_valid(target):
+		target = null;
+		
+	if target != null:
 		return target
-	else:
-		var tempT: Node2D = null;
-		for character: Node2D in get_tree().get_nodes_in_group("CharactersThatFight"):
-			if self == character: continue;
-
-			if tempT == null:
-				tempT = character;
-			elif (character.position.distance_to(self.position) < tempT.position.distance_to(self.position)):
-				tempT = character;
-		return tempT
+	
+	var tempT: Node2D = null;
+	for character: Node2D in get_tree().get_nodes_in_group("CharactersThatFight"):
+		if self == character: continue;
+		if !is_instance_valid(character): continue;
+		if tempT == null:
+			tempT = character;
+		elif (character.position.distance_to(self.position) < tempT.position.distance_to(self.position)):
+			tempT = character;
+	target = tempT
+	return target
 
 func actor_setup() -> void:
 	# Wait for the first physics frame so the NavigationServer can sync.
@@ -48,22 +53,8 @@ func set_wanted_pos(new_pos: Vector2) -> void:
 	navigation_agent.target_position = new_pos;
 
 func _physics_process(delta: float) -> void:
-	if navigation_agent.is_navigation_finished():
-		#behavior.on_end(self)
-		return
-		
-	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
-	
-	velocity = global_position.direction_to(next_path_position) * movement_speed
-	var collided: bool = move_and_slide()
-	animation_player.play("Running")
-	
-	if attack_hitbox.overlaps_body(find_target()):
-		evaluate_behavior()
-	
-	if collided:
-		evaluate_behavior()
-		set_wanted_pos(position)
+	if cur_behavior:
+		cur_behavior.do(self)
 
 func receive_damage(damage: int, source: Vector2) -> void:
 	healthPoints -= damage;
@@ -71,7 +62,6 @@ func receive_damage(damage: int, source: Vector2) -> void:
 	
 	velocity = source.direction_to(position) * (1000 * damage)
 	move_and_slide()
-	behavior.on_end(self)
 	
 	if healthPoints <= 0:
 		die()
@@ -80,8 +70,9 @@ func die() -> void:
 		queue_free()
 
 func evaluate_behavior() -> void:
-	if behavior:
-		behavior.do(self)
+	logic_behavior.do(self)
+	# behavior should be giving me a cur_behavior
+	# therefore behavior should be a logic behavior
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

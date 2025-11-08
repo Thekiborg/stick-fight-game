@@ -21,6 +21,7 @@ func can_run(character: Character) -> bool:
 		return false
 	
 	if hitbox.overlaps_body(target):
-			return true
+		print(character.name)
+		return true
 	
 	return false;

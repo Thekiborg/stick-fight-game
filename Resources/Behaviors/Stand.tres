@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Stand" load_steps=2 format=3 uid="uid://dpls0h3o7en74"]
+
+[ext_resource type="Script" uid="uid://brtbgdskt0i36" path="res://Scripts/Behaviors/Stand.gd" id="1_diwdd"]
+
+[resource]
+script = ExtResource("1_diwdd")
+metadata/_custom_type_script = "uid://brtbgdskt0i36"

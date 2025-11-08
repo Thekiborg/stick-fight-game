@@ -23,10 +23,8 @@ scale = Vector2(0.2, 0.2)
 behavior = ExtResource("5_ryrav")
 
 [node name="Amogus2" parent="." instance=ExtResource("2_e2o6t")]
-position = Vector2(429, 364)
-scale = Vector2(-0.3, 0.3)
-healthPoints = 20
-movement_speed = 1000.0
+position = Vector2(382.00003, 360)
+scale = Vector2(0.2, 0.2)
 behavior = ExtResource("5_ryrav")
 
 [node name="Camera2D" type="Camera2D" parent="."]

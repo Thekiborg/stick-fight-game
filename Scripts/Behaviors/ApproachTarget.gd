@@ -11,4 +11,4 @@ func can_run(character: Character) -> bool:
 	if target && !character.attack_hitbox.overlaps_body(target):
 		return true
 	else:
-		return true
+		return false

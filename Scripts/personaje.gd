@@ -58,6 +58,9 @@ func _physics_process(delta: float) -> void:
 	var collided: bool = move_and_slide()
 	animation_player.play("Running")
 	
+	if attack_hitbox.overlaps_body(find_target()):
+		evaluate_behavior()
+	
 	if collided:
 		evaluate_behavior()
 		set_wanted_pos(position)

@@ -14,6 +14,8 @@ var cur_behavior: Behavior;
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var attack_hitbox: Area2D = $AttackHitbox
+# I prefer this method, as it'll find subchildren without writing out the whole tree path
+@onready var debug_label: Label = find_child("DebugLabel")
 
 func _ready() -> void:
 	health_bar.max_value = healthPoints
@@ -54,26 +56,23 @@ func set_wanted_pos(new_pos: Vector2) -> void:
 
 func _physics_process(delta: float) -> void:
 	if cur_behavior:
+		debug_label.text = cur_behavior.name
 		cur_behavior.do(self)
 
 func receive_damage(damage: int, source: Vector2) -> void:
 	healthPoints -= damage;
 	health_bar.value = healthPoints
 	
-	velocity = source.direction_to(position) * (1000 * damage)
-	move_and_slide()
+	#velocity = source.direction_to(position) * (1000 * damage)
+	#move_and_slide()
 	
 	if healthPoints <= 0:
 		die()
 
 func die() -> void:
-		queue_free()
+	queue_free()
 
 func evaluate_behavior() -> void:
 	logic_behavior.do(self)
 	# behavior should be giving me a cur_behavior
 	# therefore behavior should be a logic behavior
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

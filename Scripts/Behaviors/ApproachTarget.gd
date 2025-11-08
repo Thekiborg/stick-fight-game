@@ -1,16 +1,17 @@
 class_name ApproachTarget extends Behavior
 
+func _get_name() -> String: return "ApproachTarget"
 func do(character: Character) -> void:
-	if character.cur_behavior is Attack:
-		stop_pather(character)
-		return;
+	#if character.cur_behavior is Attack:
+		#stop_pather(character)
+		#return;
 		
-	if character.attack_hitbox.overlaps_body(character.find_target()):
-		stop_pather(character)
-		return;
+	#if character.attack_hitbox.overlaps_body(character.find_target()):
+		#stop_pather(character)
+		#return;
+	
 	
 	character.set_wanted_pos(character.find_target().position)
-	
 	if character.navigation_agent.is_navigation_finished():
 		#behavior.on_end(self)
 		return

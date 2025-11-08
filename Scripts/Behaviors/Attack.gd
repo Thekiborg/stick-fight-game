@@ -1,7 +1,7 @@
 class_name Attack extends Behavior
-
 var frame:int = Engine.get_physics_frames()
 
+func _get_name() -> String: return "Attack"
 func do(character: Character) -> void:
 	var targetC: Character = character.find_target() as Character
 	if targetC:
@@ -9,6 +9,7 @@ func do(character: Character) -> void:
 	super(character)
 	
 func can_run(character: Character) -> bool:
+	print(character.name)
 	if Engine.get_physics_frames() - frame < 5:
 		return false;
 	

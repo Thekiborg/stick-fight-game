@@ -17,13 +17,13 @@ scale = Vector2(0.265625, 0.265625)
 texture = ExtResource("3_feb5d")
 script = ExtResource("3_fc0e3")
 
-[node name="Amogus" parent="." instance=ExtResource("2_e2o6t")]
-position = Vector2(735, 369)
+[node name="Amogus2" parent="." instance=ExtResource("2_e2o6t")]
+position = Vector2(382.00003, 360)
 scale = Vector2(0.2, 0.2)
 logic_behavior = ExtResource("5_ryrav")
 
-[node name="Amogus2" parent="." instance=ExtResource("2_e2o6t")]
-position = Vector2(382.00003, 360)
+[node name="Amogus" parent="." instance=ExtResource("2_e2o6t")]
+position = Vector2(735, 369)
 scale = Vector2(0.2, 0.2)
 logic_behavior = ExtResource("5_ryrav")
 

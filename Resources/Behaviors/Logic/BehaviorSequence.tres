@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BehaviorSequence" load_steps=5 format=3 uid="uid://b5sevl80aialg"]
+
+[ext_resource type="Script" uid="uid://bka3fcsiavoyu" path="res://Scripts/Behaviors/Behavior.gd" id="1_camuo"]
+[ext_resource type="Resource" uid="uid://ivyxy6f235ei" path="res://Resources/Behaviors/Attack.tres" id="2_1xdbo"]
+[ext_resource type="Script" uid="uid://b7fxijyssdy12" path="res://Scripts/Behaviors/Logic/BehaviorSequence.gd" id="2_3cig7"]
+[ext_resource type="Resource" uid="uid://pkspsfmmwrwh" path="res://Resources/Behaviors/ApproachTarget.tres" id="3_1xdbo"]
+
+[resource]
+script = ExtResource("2_3cig7")
+behaviors = Array[ExtResource("1_camuo")]([ExtResource("2_1xdbo"), ExtResource("3_1xdbo")])
+metadata/_custom_type_script = "uid://b7fxijyssdy12"
